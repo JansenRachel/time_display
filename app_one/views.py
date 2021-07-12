@@ -1,7 +1,17 @@
-import re
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
+from time import gmtime, strftime
+# from time import time, strftime
 
+    
 def index(request):
-    return HttpResponse("This is my response!")
+    context = {
+        "time": strftime("%b %d, %I:%M %p", gmtime())
+        # "time": strftime("%b %d, %I:%M %p", time.localtime())
+
+    }
+    return render(request,'index.html', context)
+
 
 # Create your views here.
+
+
